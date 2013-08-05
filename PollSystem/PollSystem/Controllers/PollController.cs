@@ -16,5 +16,10 @@ namespace PollSystem.Controllers
             return View();
         }
 
+        public ActionResult Vote()
+        {
+            return View();
+        }
+
     }
 }

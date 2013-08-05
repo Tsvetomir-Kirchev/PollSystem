@@ -1,2 +1,153 @@
 ﻿body {
+	background: url("/Content/Images/background.png");
+	font-family: Tahoma, Verdana, sans-serif;
+}
+
+.clear:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+#wrapper {
+	width: 600px;
+	margin: 0 auto;
+	background-color: #fff;
+	border-radius: 8px;
+	padding-bottom: 10px;
+}
+
+header {
+	padding: 15px 20px;
+}
+
+header > h1 {
+	padding: 0;
+	margin: 0;
+	font-size: 15px;
+	color: #39484d;
+}
+
+article {
+	background-color: #1f2f2f;
+	margin: 10px;
+	border-radius: 8px;
+	padding: 10px;
+}
+
+.question {
+	background-color: #39484d;
+	color: #fff;
+	float: left;
+	border-radius: 8px;
+	padding: 10px;
+	width: 85%;
+	margin-top: 10px;
+}
+
+.buttonBackToVoteList {
+	text-decoration: none;
+	background-color: #008f1c;
+	color: #c4d0d0;
+	border-radius: 8px;
+	padding: 10px;
+	margin-left: 4px;
+	margin-right: 4px;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.buttonBackToVoteList:hover {
+	text-decoration: none;
+	background-color: #00bf2c;
+	color: #555555;
+	border-radius: 8px;
+	padding: 10px;
+	margin-left: 4px;
+	margin-right: 4px;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.buttonVote {
+	float: right;
+	background-color: #008f1c;
+	border: none;
+	border-radius: 8px;
+	padding: 10px;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.buttonVote:hover {
+	float: right;
+	background-color: #00bf2c;
+	color: #555555;
+}
+
+.votes {
+	float: left;
+}
+
+.answer {
+	color: #fff;
+	font-size: 12px;
+}
+
+nav {
+	margin: 10px 8px;
+	text-align: center;
+}
+
+nav a {
+	text-decoration: none;
+	background-color: #008f1c;
+	color: #c4d0d0;
+	border-radius: 8px;
+	padding: 10px;
+	margin-left: 4px;
+	margin-right: 4px;
+	display: inline-block;
+}
+
+nav a:hover {
+	text-decoration: none;
+	background-color: #00bf2c;
+	color: #555555;
+	border-radius: 8px;
+	padding: 10px;
+	margin-left: 4px;
+	margin-right: 4px;
+	display: inline-block;
+}
+
+.votes {
+	margin-top: 10px;
+}
+
+.progress {
+	width: 125px;
+	height: 10px;
+	border-radius: 5px;
+	background-color: #555555;
+	margin-right: 10px;
+}
+
+.votePercents {
+	background-color: #00bf2c;
+	border-radius: 5px;
+	width: 85%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+footer {
+	text-align: center;
+	font-size: 10px;
+	font-weight: bold;
+	color: #39484d;
 }
