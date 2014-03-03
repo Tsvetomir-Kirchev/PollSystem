@@ -1,6 +1,7 @@
 ﻿using PollSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -38,7 +39,16 @@ namespace PollSystem.Controllers
         [HttpPost]
         public ActionResult CreateVote(int id, int pollId)
         {
+            var ip = Request.ServerVariables["REMOTE_ADDR"];
+            var poll = _db.Polls.Find(pollId);
+            if (poll.UserIpAddress != null && poll.UserIpAddress.Equals(ip))
+            {
+                return JavaScript("<script>alert('Sorry, you can vote only once for this IP address.');</script>");
+            }
+
             _db.Polls.Find(pollId).Votes.Add(new Vote { DateVoted = DateTime.Now, AnswerId = id });
+            poll.UserIpAddress = ip;
+            _db.Entry(poll).State = EntityState.Modified;
             _db.SaveChanges();
 
             return View();

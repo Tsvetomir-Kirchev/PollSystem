@@ -57,3 +57,6 @@ D:\__Development\PollSystem\PollSystem\PollSystem\bin\EntityFramework.dll
 D:\__Development\PollSystem\PollSystem\PollSystem\bin\EntityFramework.SqlServer.dll
 D:\__Development\PollSystem\PollSystem\PollSystem\bin\EntityFramework.xml
 D:\__Development\PollSystem\PollSystem\PollSystem\bin\EntityFramework.SqlServer.xml
+D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.Migrations.InitialCreate.resources
+D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.csproj.GenerateResource.Cache
+D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.Migrations.addingip.resources

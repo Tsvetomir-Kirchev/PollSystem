@@ -12,5 +12,6 @@ namespace PollSystem.Models
         public DateTime DateCreated { get; set; }
         public virtual List<Answer> Answers { get; set; }
         public virtual List<Vote> Votes { get; set; }
+        public string UserIpAddress { get; set; }
     }
 }
