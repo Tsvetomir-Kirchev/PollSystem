@@ -5,17 +5,21 @@
 }
 
 <header>
-	<h1>Poll System - List of all polls - Page 5 / 8</h1>
+	<h1>Poll System - List of all polls - Page @ViewBag.Page / @ViewBag.AllPages</h1>
 </header>
 <section>
     @foreach (var poll in Model)
     {
-        double coef = 100 / poll.Votes.Count();
+        double coef = 0;
+        if (poll.Votes.Count() != 0)
+        {
+            coef = 100 / poll.Votes.Count();
+        }
         <article class="clear">
             <div class="question">
                 @poll.Title
             </div>
-            <form action="@Url.Action("Vote", new { id = poll.Id })" method="get">
+            <form action="@Url.Action("Vote", new { id = poll.Id, page = ViewBag.Page })" method="get">
                 <input type="submit" value="Vote!" class="buttonVote" />
             </form>
             <div class="votes">
@@ -35,14 +39,30 @@
 <nav>
 	<a href="#">First</a>
 	<a href="#">Prev</a>
-	<a href="#">1</a>
-	<a href="#">2</a>
-	<a href="#">3</a>
-	<a href="#">4</a>
-	<a href="#">5</a>
-	<a href="#">6</a>
-	<a href="#">7</a>
-	<a href="#">8</a>
+    @if (ViewBag.AllPages >= 8)
+    {
+        if(ViewBag.Page >= 8)
+        {
+            for (int i = ViewBag.Page - 8; i <= ViewBag.Page; i++)
+            {
+                <a href="Poll/AllPolls?page=@i">i</a>
+            }
+        }
+        else
+        {
+            for (int i = 1; i <= 8; i++)
+            {
+                <a href="Poll/AllPolls?page=@i">i</a>
+            }
+        }
+    }
+    else
+    {
+        for (int i = 1; i <= ViewBag.AllPages; i++)
+        {
+            <a href="Poll/AllPolls?page=@i">@i</a>
+        }
+    }
 	<a href="#">Next</a>
 	<a href="#">Last</a>
 </nav>

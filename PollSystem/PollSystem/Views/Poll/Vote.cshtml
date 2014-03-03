@@ -17,7 +17,7 @@
                         <input type="submit" value="Vote!" class="buttonVote" />
                     </form>
                 }
-				<a href="@Url.Action("AllPolls")" class="buttonBackToVoteList">Back to the list of polls</a>
+				<a href="@Url.Action("AllPolls", "Poll", new { page = @ViewBag.Page })" class="buttonBackToVoteList">Back to the list of polls</a>
 			</article>
 			<footer>
 				Copyright &copy; Just Polls (forever beta) 2012

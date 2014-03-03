@@ -9,9 +9,7 @@ namespace PollSystem.Controllers
 {
     public class PollController : Controller
     {
-        //
-        // GET: /Poll/
-
+        public const int ITEMS_PER_PAGE = 3;
         private PollSystemContext _db;
 
         public PollController()
@@ -19,17 +17,20 @@ namespace PollSystem.Controllers
             _db = new PollSystemContext();
         }
 
-        public ActionResult AllPolls()
+        public ActionResult AllPolls(int page = 1)
         {
-            List<Poll> polls = _db.Polls.ToList();
+            List<Poll> polls = _db.Polls.OrderBy(p => p.Id).Skip(ITEMS_PER_PAGE * (page - 1)).Take(ITEMS_PER_PAGE).ToList();
+            ViewBag.Page = page;
+            ViewBag.AllPages = _db.Polls.Count() / ITEMS_PER_PAGE + 1;
 
             return View(polls);
         }
 
         [HttpGet]
-        public ActionResult Vote(int id)
+        public ActionResult Vote(int id, int page = 1)
         {
             var poll = _db.Polls.Find(id);
+            ViewBag.Page = page;
 
             return View(poll);
         }
