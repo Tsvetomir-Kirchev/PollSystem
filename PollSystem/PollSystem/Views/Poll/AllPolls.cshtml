@@ -37,8 +37,15 @@
     }
 </section>
 <nav>
-	<a href="#">First</a>
-	<a href="#">Prev</a>
+    <a href="Poll/AllPolls?page=1">First</a>
+    @if (ViewBag.Page > 1)
+    {
+        <a href="Poll/AllPolls?page=@(ViewBag.Page - 1)">Prev</a>
+    }
+    else
+    {
+        <a href="Poll/AllPolls?page=1">Prev</a>
+    }
     @if (ViewBag.AllPages >= 8)
     {
         if(ViewBag.Page >= 8)
@@ -63,8 +70,15 @@
             <a href="Poll/AllPolls?page=@i">@i</a>
         }
     }
-	<a href="#">Next</a>
-	<a href="#">Last</a>
+    @if (ViewBag.Page < ViewBag.AllPages)
+    {
+        <a href="Poll/AllPolls?page=@(ViewBag.Page + 1)">Next</a>
+    }
+    else
+    {
+        <a href="Poll/AllPolls?page=@ViewBag.AllPages">Next</a>
+    }
+    <a href="Poll/AllPolls?page=@ViewBag.AllPages">Last</a>
 </nav>
 <footer>
 	Copyright &copy; Polls System 2012
