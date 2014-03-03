@@ -1,104 +1,51 @@
-﻿@{
+﻿@model IEnumerable<PollSystem.Models.Poll>
+
+@{
     ViewBag.Title = "List Of All Polls";
 }
 
-            <header>
-				<h1>Just Polls - List of all polls - Page 5 / 8</h1>
-			</header>
-			<section>
-				<article class="clear">
-					<div class="question">
-						On a scale of 1 to 10 what is your favourite color of the alphabet?
-					</div>
-					<button class="buttonVote">Vote!</button>
-					<div class="votes">
-						<table>
-							<tr>
-								<td><div class="progress"><span class="votePercents"></span></div></td>
-								<td class="answer"><strong>Yes.</strong> (41 votes)</td>
-							</tr>
-							<tr>
-								<td><div class="progress"></div></td>
-								<td class="answer"><strong>No, I don't think so.</strong> (30 votes)</td>
-							</tr>
-							<tr>
-								<td><div class="progress"></div></td>
-								<td class="answer"><strong>May be.</strong> (20 votes)</td>
-							</tr>
-							<tr>
-								<td><div class="progress"></div></td>
-								<td class="answer"><strong>Can you repeat the question?</strong> (9 votes)</td>
-							</tr>
-						</table>
-					</div>
-				</article>
-				<article class="clear">
-					<div class="question">
-						On a scale of 1 to 10 what is your favourite color of the alphabet?
-					</div>
-					<button class="buttonVote">Vote!</button>
-					<div class="votes">
-						<table>
-							<tr>
-								<td><div class="progress"><span class="votePercents"></span></div></td>
-								<td class="answer"><strong>Yes.</strong> (41 votes)</td>
-							</tr>
-							<tr>
-								<td><div class="progress"></div></td>
-								<td class="answer"><strong>No, I don't think so.</strong> (30 votes)</td>
-							</tr>
-							<tr>
-								<td><div class="progress"></div></td>
-								<td class="answer"><strong>May be.</strong> (20 votes)</td>
-							</tr>
-							<tr>
-								<td><div class="progress"></div></td>
-								<td class="answer"><strong>Can you repeat the question?</strong> (9 votes)</td>
-							</tr>
-						</table>
-					</div>
-				</article>
-				<article class="clear">
-					<div class="question">
-						On a scale of 1 to 10 what is your favourite color of the alphabet?
-					</div>
-					<button class="buttonVote">Vote!</button>
-					<div class="votes">
-						<table>
-							<tr>
-								<td><div class="progress"><span class="votePercents"></span></div></td>
-								<td class="answer"><strong>Yes.</strong> (41 votes)</td>
-							</tr>
-							<tr>
-								<td><div class="progress"></div></td>
-								<td class="answer"><strong>No, I don't think so.</strong> (30 votes)</td>
-							</tr>
-							<tr>
-								<td><div class="progress"></div></td>
-								<td class="answer"><strong>May be.</strong> (20 votes)</td>
-							</tr>
-							<tr>
-								<td><div class="progress"></div></td>
-								<td class="answer"><strong>Can you repeat the question?</strong> (9 votes)</td>
-							</tr>
-						</table>
-					</div>
-				</article>
-			</section>
-			<nav>
-				<a href="#">First</a>
-				<a href="#">Prev</a>
-				<a href="#">1</a>
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-				<a href="#">5</a>
-				<a href="#">6</a>
-				<a href="#">7</a>
-				<a href="#">8</a>
-				<a href="#">Next</a>
-				<a href="#">Last</a>
-			</nav>
-			<footer>
-				Copyright &copy; Just Polls (forever beta) 2012
-			</footer>
+<header>
+	<h1>Poll System - List of all polls - Page 5 / 8</h1>
+</header>
+<section>
+    @foreach (var poll in Model)
+    {
+        double coef = 100 / poll.Votes.Count();
+        <article class="clear">
+            <div class="question">
+                @poll.Title
+            </div>
+            <form action="@Url.Action("Vote", new { id = poll.Id })" method="get">
+                <input type="submit" value="Vote!" class="buttonVote" />
+            </form>
+            <div class="votes">
+                <table>
+                    @foreach (var answer in poll.Answers)
+                    {
+                        <tr>
+                        <td><div class="progress"><span style="width: @(coef * poll.Votes.Where(v => v.AnswerId == answer.Id).Count())px;" class="votePercents"></span></div></td>
+                        <td class="answer"><strong>@answer.Content</strong> (@(poll.Votes.Where(a => a.AnswerId == answer.Id).Count()) votes)</td>
+                    </tr>
+                    }
+                </table>
+            </div>
+        </article>
+    }
+</section>
+<nav>
+	<a href="#">First</a>
+	<a href="#">Prev</a>
+	<a href="#">1</a>
+	<a href="#">2</a>
+	<a href="#">3</a>
+	<a href="#">4</a>
+	<a href="#">5</a>
+	<a href="#">6</a>
+	<a href="#">7</a>
+	<a href="#">8</a>
+	<a href="#">Next</a>
+	<a href="#">Last</a>
+</nav>
+<footer>
+	Copyright &copy; Polls System 2012
+</footer>

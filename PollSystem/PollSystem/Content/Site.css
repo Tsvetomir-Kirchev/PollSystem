@@ -139,10 +139,11 @@ nav a:hover {
 .votePercents {
 	background-color: #00bf2c;
 	border-radius: 5px;
-	width: 85%;
 	margin: 0;
 	padding: 0;
 	position: relative;
+    display: block;
+    height: 9px;
 }
 
 footer {
