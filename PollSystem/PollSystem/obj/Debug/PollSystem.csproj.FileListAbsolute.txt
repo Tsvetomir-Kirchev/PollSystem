@@ -49,7 +49,6 @@ D:\__Development\PollSystem\PollSystem\PollSystem\bin\System.Web.Razor.xml
 D:\__Development\PollSystem\PollSystem\PollSystem\bin\System.Web.WebPages.xml
 D:\__Development\PollSystem\PollSystem\PollSystem\bin\System.Web.WebPages.Deployment.xml
 D:\__Development\PollSystem\PollSystem\PollSystem\bin\System.Web.WebPages.Razor.xml
-D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.csprojResolveAssemblyReference.cache
 D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.dll
 D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.pdb
 D:\__Development\PollSystem\PollSystem\PollSystem\bin\PollSystem.dll.config

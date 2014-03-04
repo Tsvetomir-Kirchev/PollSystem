@@ -12,7 +12,7 @@
                 {
                     <div class="question">
                         @answer.Content
-                    </div>
+                    </div>                    
                     <form action="@Url.Action("CreateVote", new { id = answer.Id, pollId = @Model.Id })" method="post">
                         <input type="submit" value="Vote!" class="buttonVote" />
                     </form>

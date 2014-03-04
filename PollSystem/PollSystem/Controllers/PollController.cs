@@ -43,7 +43,9 @@ namespace PollSystem.Controllers
             var poll = _db.Polls.Find(pollId);
             if (poll.UserIpAddress != null && poll.UserIpAddress.Equals(ip))
             {
-                return JavaScript("<script>alert('Sorry, you can vote only once for this IP address.');</script>");
+                ViewBag.Title = "Sorry, you have been voted for this question already";
+                ViewBag.Message = "Sorry, you can vote only once for this question with this IP address.";
+                return PartialView("_Dialog");
             }
 
             _db.Polls.Find(pollId).Votes.Add(new Vote { DateVoted = DateTime.Now, AnswerId = id });
@@ -52,6 +54,11 @@ namespace PollSystem.Controllers
             _db.SaveChanges();
 
             return View();
+        }
+
+        public PartialViewResult Dialog()
+        {
+            return PartialView("_Dialog");
         }
 
     }

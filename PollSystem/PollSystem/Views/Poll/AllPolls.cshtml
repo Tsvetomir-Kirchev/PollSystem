@@ -37,29 +37,29 @@
     }
 </section>
 <nav>
-    <a href="AllPolls?page=1">First</a>
+    <a href="@Url.Action("AllPolls", "Poll", new { page = 1 })">First</a>
     @if (ViewBag.Page > 1)
+{
+    <a href="@Url.Action("AllPolls", "Poll", new { page = (ViewBag.Page - 1) })">Prev</a>
+}
+else
+{
+        <a href="@Url.Action("AllPolls", "Poll", new { page = 1 })">Prev</a>
+    }
+    @if (ViewBag.AllPages >= 8)
+{
+    if (ViewBag.Page >= 8)
     {
-        <a href="AllPolls?page=@(ViewBag.Page - 1)">Prev</a>
+        for (int i = ViewBag.Page - 8; i <= ViewBag.Page; i++)
+        {
+            <a href="@Url.Action("AllPolls", "Poll", new { page = i })">@i</a>
+        }
     }
     else
     {
-        <a href="AllPolls?page=1">Prev</a>
-    }
-    @if (ViewBag.AllPages >= 8)
-    {
-        if(ViewBag.Page >= 8)
+        for (int i = 1; i <= 8; i++)
         {
-            for (int i = ViewBag.Page - 8; i <= ViewBag.Page; i++)
-            {
-                <a href="AllPolls?page=@i">i</a>
-            }
-        }
-        else
-        {
-            for (int i = 1; i <= 8; i++)
-            {
-                <a href="AllPolls?page=@i">i</a>
+                <a href="@Url.Action("AllPolls", "Poll", new { page = i })">@i</a>
             }
         }
     }
@@ -67,18 +67,18 @@
     {
         for (int i = 1; i <= ViewBag.AllPages; i++)
         {
-            <a href="AllPolls?page=@i">@i</a>
+            <a href="@Url.Action("AllPolls", "Poll", new { page = i })">@i</a>
         }
     }
     @if (ViewBag.Page < ViewBag.AllPages)
-    {
-        <a href="AllPolls?page=@(ViewBag.Page + 1)">Next</a>
+{
+    <a href="@Url.Action("AllPolls", "Poll", new { page = (ViewBag.Page + 1) })">Next</a>
+}
+else
+{
+        <a href="@Url.Action("AllPolls", "Poll", new { page = ViewBag.AllPages })">Next</a>
     }
-    else
-    {
-        <a href="AllPolls?page=@ViewBag.AllPages">Next</a>
-    }
-    <a href="AllPolls?page=@ViewBag.AllPages">Last</a>
+    <a href="@Url.Action("AllPolls", "Poll", new { page = ViewBag.AllPages })">Last</a>
 </nav>
 <footer>
 	Copyright &copy; Polls System 2012
