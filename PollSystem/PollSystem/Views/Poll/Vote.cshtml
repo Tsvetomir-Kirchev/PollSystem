@@ -13,7 +13,7 @@
                     <div class="question">
                         @answer.Content
                     </div>                    
-                    <form action="@Url.Action("CreateVote", new { id = answer.Id, pollId = @Model.Id })" method="post">
+                    <form action="@Url.Action("CreateVote", new { id = answer.Id, pollId = @Model.Id, page = ViewBag.Page })" method="post">
                         <input type="submit" value="Vote!" class="buttonVote" />
                     </form>
                 }

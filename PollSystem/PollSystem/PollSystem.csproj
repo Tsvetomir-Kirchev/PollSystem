@@ -126,10 +126,27 @@
     <Compile Include="Migrations\201403031726054_adding-ip.Designer.cs">
       <DependentUpon>201403031726054_adding-ip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201403041528341_listofip.cs" />
+    <Compile Include="Migrations\201403041528341_listofip.Designer.cs">
+      <DependentUpon>201403041528341_listofip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403041536277_ipaddress.cs" />
+    <Compile Include="Migrations\201403041536277_ipaddress.Designer.cs">
+      <DependentUpon>201403041536277_ipaddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403041545573_removeipaddresstable.cs" />
+    <Compile Include="Migrations\201403041545573_removeipaddresstable.Designer.cs">
+      <DependentUpon>201403041545573_removeipaddresstable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403041551328_pollidinvotes.cs" />
+    <Compile Include="Migrations\201403041551328_pollidinvotes.Designer.cs">
+      <DependentUpon>201403041551328_pollidinvotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Poll.cs" />
     <Compile Include="Models\PollSystemContext.cs" />
+    <Compile Include="Models\UserIpAddress.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -178,6 +195,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201403031726054_adding-ip.resx">
       <DependentUpon>201403031726054_adding-ip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403041528341_listofip.resx">
+      <DependentUpon>201403041528341_listofip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403041536277_ipaddress.resx">
+      <DependentUpon>201403041536277_ipaddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403041545573_removeipaddresstable.resx">
+      <DependentUpon>201403041545573_removeipaddresstable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403041551328_pollidinvotes.resx">
+      <DependentUpon>201403041551328_pollidinvotes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

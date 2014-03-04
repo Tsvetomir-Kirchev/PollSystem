@@ -60,3 +60,7 @@ D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.Migration
 D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.csproj.GenerateResource.Cache
 D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.Migrations.addingip.resources
 D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.csprojResolveAssemblyReference.cache
+D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.Migrations.listofip.resources
+D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.Migrations.ipaddress.resources
+D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.Migrations.removeipaddresstable.resources
+D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.Migrations.pollidinvotes.resources

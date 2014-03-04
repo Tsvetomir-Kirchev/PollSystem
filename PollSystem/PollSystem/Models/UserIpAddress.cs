@@ -5,12 +5,10 @@ using System.Web;
 
 namespace PollSystem.Models
 {
-    public class Vote
+    public class UserIpAddress
     {
         public int Id { get; set; }
-        public int AnswerId { get; set; }
-        public DateTime DateVoted { get; set; }
-        public string UserIp { get; set; }
         public int PollId { get; set; }
+        public string IpAddress { get; set; }
     }
 }
