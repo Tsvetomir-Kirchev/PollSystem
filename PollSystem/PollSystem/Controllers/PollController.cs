@@ -43,9 +43,7 @@ namespace PollSystem.Controllers
             var poll = _db.Polls.Find(pollId);
             if (poll.UserIpAddress != null && poll.UserIpAddress.Equals(ip))
             {
-                ViewBag.Title = "Sorry, you have been voted for this question already";
-                ViewBag.Message = "Sorry, you can vote only once for this question with this IP address.";
-                return PartialView("_Dialog");
+                return Content(CreateModal("Sorry, you can vote only once for this question with this IP address"));
             }
 
             _db.Polls.Find(pollId).Votes.Add(new Vote { DateVoted = DateTime.Now, AnswerId = id });
@@ -59,6 +57,22 @@ namespace PollSystem.Controllers
         public PartialViewResult Dialog()
         {
             return PartialView("_Dialog");
+        }
+
+        private string CreateModal(string msg)
+        {
+            string dialog = "<link rel='stylesheet' href='//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css'>" +
+                "<script src='//code.jquery.com/jquery-1.9.1.js'></script>" +
+                "<script src='//code.jquery.com/ui/1.10.4/jquery-ui.js'></script>" +
+                "<div id='dialog' title='Basic dialog'>" +
+                "<p>" + msg + "</p>" +
+                "</div>" +
+                "<script>" +
+                "$(function () { $('#dialog').dialog({ resizable: false, height: 240," +
+                "modal: true,buttons: {'OK': function () {$(this).dialog('close');} }});});" +
+                "</script>";
+
+            return dialog;
         }
 
     }

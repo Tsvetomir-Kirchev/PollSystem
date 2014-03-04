@@ -59,3 +59,4 @@ D:\__Development\PollSystem\PollSystem\PollSystem\bin\EntityFramework.SqlServer.
 D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.Migrations.InitialCreate.resources
 D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.csproj.GenerateResource.Cache
 D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.Migrations.addingip.resources
+D:\__Development\PollSystem\PollSystem\PollSystem\obj\Debug\PollSystem.csprojResolveAssemblyReference.cache
