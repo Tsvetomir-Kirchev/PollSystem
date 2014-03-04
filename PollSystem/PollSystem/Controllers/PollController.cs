@@ -22,7 +22,14 @@ namespace PollSystem.Controllers
         {
             List<Poll> polls = _db.Polls.OrderBy(p => p.Id).Skip(ITEMS_PER_PAGE * (page - 1)).Take(ITEMS_PER_PAGE).ToList();
             ViewBag.Page = page;
-            ViewBag.AllPages = _db.Polls.Count() / ITEMS_PER_PAGE + 1;
+            if (_db.Polls.Count() % 2 == 0)
+            {
+                ViewBag.AllPages = _db.Polls.Count() / ITEMS_PER_PAGE;
+            }
+            else
+            {
+                ViewBag.AllPages = _db.Polls.Count() / ITEMS_PER_PAGE + 1;
+            }
 
             return View(polls);
         }
@@ -43,7 +50,8 @@ namespace PollSystem.Controllers
             var poll = _db.Polls.Find(pollId);
             if (poll.UserIpAddress != null && poll.UserIpAddress.Equals(ip))
             {
-                return Content(CreateModal("Sorry, you can vote only once for this question with this IP address"));
+                return Content(CreateModal("You hvae voted this question",
+                    "Sorry, you can vote only once for this question with this IP address"));
             }
 
             _db.Polls.Find(pollId).Votes.Add(new Vote { DateVoted = DateTime.Now, AnswerId = id });
@@ -59,17 +67,17 @@ namespace PollSystem.Controllers
             return PartialView("_Dialog");
         }
 
-        private string CreateModal(string msg)
+        private string CreateModal(string title, string msg)
         {
             string dialog = "<link rel='stylesheet' href='//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css'>" +
                 "<script src='//code.jquery.com/jquery-1.9.1.js'></script>" +
                 "<script src='//code.jquery.com/ui/1.10.4/jquery-ui.js'></script>" +
-                "<div id='dialog' title='Basic dialog'>" +
+                "<div id='dialog' style='background: #1f2f2f; color: #fff;' title='" + title + "'>" +
                 "<p>" + msg + "</p>" +
                 "</div>" +
                 "<script>" +
                 "$(function () { $('#dialog').dialog({ resizable: false, height: 240," +
-                "modal: true,buttons: {'OK': function () {$(this).dialog('close');} }});});" +
+                "buttons: {'OK': function () {$(this).dialog('close'); window.location = '/'} }});});" +
                 "</script>";
 
             return dialog;
