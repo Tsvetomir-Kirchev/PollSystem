@@ -18,18 +18,13 @@ namespace PollSystem.Controllers
             _db = new PollSystemContext();
         }
 
-        public ActionResult AllPolls(int page = 1)
+        public ActionResult AllPolls(int page = 1, bool success = false)
         {
             List<Poll> polls = _db.Polls.OrderBy(p => p.Id).Skip(ITEMS_PER_PAGE * (page - 1)).Take(ITEMS_PER_PAGE).ToList();
             ViewBag.Page = page;
-            if (_db.Polls.Count() % 2 == 0)
-            {
-                ViewBag.AllPages = _db.Polls.Count() / ITEMS_PER_PAGE;
-            }
-            else
-            {
-                ViewBag.AllPages = _db.Polls.Count() / ITEMS_PER_PAGE + 1;
-            }
+            // TODO: Fix the problem with AllPages
+            ViewBag.AllPages = _db.Polls.Count() / ITEMS_PER_PAGE + 1;
+            ViewBag.SuccessfullVote = success;
 
             return View(polls);
         }
@@ -56,22 +51,14 @@ namespace PollSystem.Controllers
 
             if (voted != null)
             {
-                return Content(CreateModal("You hvae voted this question",
-                    "Sorry, you can vote only once for this question with this IP address"));
+                return Json(new { showDialog = true });
             }
 
-            //if (UserIpAddress poll.UserIpAddress != null && poll.UserIpAddress.Equals(ip))
-            //{
-            //    return Content(CreateModal("You hvae voted this question",
-            //        "Sorry, you can vote only once for this question with this IP address"));
-            //}
-
             _db.Polls.Find(pollId).Votes.Add(new Vote { DateVoted = DateTime.Now, AnswerId = id, PollId = pollId, UserIp = ip });
-            //poll.UserIpAddress.Add(ip.ToString());
             _db.Entry(poll).State = EntityState.Modified;
             _db.SaveChanges();
 
-            return RedirectToAction("AllPolls", new { page = page });
+            return Json(new { url = "/Poll/AllPolls/?page=" + page });
         }
 
         public PartialViewResult Dialog()
@@ -85,6 +72,7 @@ namespace PollSystem.Controllers
             string dialog = "<link rel='stylesheet' href='//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css'>" +
                 "<script src='//code.jquery.com/jquery-1.9.1.js'></script>" +
                 "<script src='//code.jquery.com/ui/1.10.4/jquery-ui.js'></script>" +
+                "<script>$('data-ajax-update').text('dialog')</script>" +
                 "<div id='dialog' style='background: #1f2f2f; color: #fff;' title='" + title + "'>" +
                 "<p>" + msg + "</p>" +
                 "</div>" +
