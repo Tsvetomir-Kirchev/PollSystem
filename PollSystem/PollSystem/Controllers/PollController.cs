@@ -58,30 +58,13 @@ namespace PollSystem.Controllers
             _db.Entry(poll).State = EntityState.Modified;
             _db.SaveChanges();
 
-            return Json(new { url = "/Poll/AllPolls/?page=" + page });
+            // TODO: Fix Url difference problem (localhost and online)
+            return Json(new { url = "/PollSystem/Poll/AllPolls/?page=" + page });
         }
 
         public PartialViewResult Dialog()
         {
             return PartialView("_Dialog");
-        }
-
-        private string CreateModal(string title, string msg)
-        {
-            string appPath = HttpContext.Request.ApplicationPath;
-            string dialog = "<link rel='stylesheet' href='//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css'>" +
-                "<script src='//code.jquery.com/jquery-1.9.1.js'></script>" +
-                "<script src='//code.jquery.com/ui/1.10.4/jquery-ui.js'></script>" +
-                "<script>$('data-ajax-update').text('dialog')</script>" +
-                "<div id='dialog' style='background: #1f2f2f; color: #fff;' title='" + title + "'>" +
-                "<p>" + msg + "</p>" +
-                "</div>" +
-                "<script>" +
-                "$(function () { $('#dialog').dialog({ resizable: false, height: 240," +
-                "buttons: {'OK': function () {$(this).dialog('close'); window.location = '" + appPath + "/'} }});});" +
-                "</script>";
-            
-            return dialog;
         }
 
     }

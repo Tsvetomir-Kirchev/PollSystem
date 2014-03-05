@@ -1,10 +1,6 @@
 ﻿@model PollSystem.Models.Poll
 @{
     ViewBag.Title = "Vote";
-    if(ViewBag.SuccessfullVote != null && ViewBag.SuccessfullVote == true)
-    {
-        Response.Redirect("~/AllPolls");
-    }
 }
 
             <header>
@@ -16,14 +12,13 @@
                 {
                     <div class="question">
                         @answer.Content
-                    </div>       
-                    <input type="button" value="Vote!" data-id="@answer.Id" data-pollid="@Model.Id" data-page="@ViewBag.Page" class="buttonVote vote" />
+                    </div>                    
+                    <form action="@Url.Action("CreateVote", new { id = answer.Id, pollId = @Model.Id })" method="post">
+                        <input type="submit" value="Vote!" class="buttonVote" />
+                    </form>
                 }
 				<a href="@Url.Action("AllPolls", "Poll", new { page = @ViewBag.Page })" class="buttonBackToVoteList">Back to the list of polls</a>
 			</article>
 			<footer>
 				Copyright &copy; Just Polls (forever beta) 2012
 			</footer>
-<div id="dialog" title="Warning" style="display: none;">
-    <p>Sorry, you have voted for this question from this IP address</p>
-</div>
