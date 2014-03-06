@@ -24,7 +24,6 @@ namespace PollSystem.Controllers
             ViewBag.Page = page;
             // TODO: Fix the problem with AllPages
             ViewBag.AllPages = _db.Polls.Count() / ITEMS_PER_PAGE + 1;
-            ViewBag.SuccessfullVote = success;
 
             return View(polls);
         }
@@ -58,8 +57,9 @@ namespace PollSystem.Controllers
             _db.Entry(poll).State = EntityState.Modified;
             _db.SaveChanges();
 
-            // TODO: Fix Url difference problem (localhost and online)
-            return Json(new { url = "/PollSystem/Poll/AllPolls/?page=" + page });
+            var applicationPath = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath;
+
+            return Json(new { url = applicationPath + "/Poll/AllPolls/?page=" + page });
         }
 
         public PartialViewResult Dialog()

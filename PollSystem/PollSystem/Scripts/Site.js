@@ -6,8 +6,9 @@ function onVoteButtonClick() {
     var id = $(this).data("id");
     var pollId = $(this).data("pollid");
     var page = $(this).data("page");
+    var url = $(this).data("url");
     $.ajax({
-        url: "/PollSystem/Poll/CreateVote",
+        url: url + "/Poll/CreateVote",
         type: 'POST',
         data: { 'id': id, 'pollid': pollId, 'page': page },
         success: function (result) {
