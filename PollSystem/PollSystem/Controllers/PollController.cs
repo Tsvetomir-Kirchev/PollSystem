@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace PollSystem.Controllers
 {
+    [HandleError]
     public class PollController : Controller
     {
         public const int ITEMS_PER_PAGE = 3;

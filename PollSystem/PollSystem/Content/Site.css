@@ -156,6 +156,10 @@ footer {
 .vote {
 }
 
+#error {
+    padding: 10px 25px;
+}
+
 /* Styling jQuery dialog */
 .voted.ui-dialog {
     background-color: #1f2f2f;
