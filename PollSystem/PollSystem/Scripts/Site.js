@@ -27,8 +27,9 @@ function onVoteButtonClick() {
 function showDialog() {
     $("#dialog").dialog({
         resizable: false,
-        height: 240,
+        height: 250,
         modal: true,
+        dialogClass: "voted",
         buttons: {
             "OK": function () {
                 $(this).dialog("close");

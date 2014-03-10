@@ -155,3 +155,25 @@ footer {
 
 .vote {
 }
+
+/* Styling jQuery dialog */
+.voted.ui-dialog {
+    background-color: #1f2f2f;
+    background-image:none !important;
+    border:none !important;
+}
+
+.voted div.ui-dialog-buttonpane {
+    background-color: #1f2f2f;
+}
+
+#dialog {
+    background-color: #39484d;
+    color: #fff;
+}
+
+/*.ui-widget-header {
+    background-color: #008f1c !important;
+    background-image:none !important;
+    border:none !important;
+}*/

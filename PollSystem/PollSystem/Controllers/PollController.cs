@@ -24,6 +24,10 @@ namespace PollSystem.Controllers
             ViewBag.Page = page;
             // TODO: Fix the problem with AllPages
             ViewBag.AllPages = _db.Polls.Count() / ITEMS_PER_PAGE + 1;
+            if (page > ViewBag.AllPages || page < 1)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound, "Bad Request");
+            }
 
             return View(polls);
         }
