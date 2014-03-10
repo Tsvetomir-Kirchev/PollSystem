@@ -39,27 +39,27 @@
 <nav>
     <a href="@Url.Action("AllPolls", "Poll", new { page = 1 })">First</a>
     @if (ViewBag.Page > 1)
-{
-    <a href="@Url.Action("AllPolls", "Poll", new { page = (ViewBag.Page - 1) })">Prev</a>
-}
-else
-{
-        <a href="@Url.Action("AllPolls", "Poll", new { page = 1 })">Prev</a>
-    }
-    @if (ViewBag.AllPages >= 8)
-{
-    if (ViewBag.Page >= 8)
     {
-        for (int i = ViewBag.Page - 8; i <= ViewBag.Page; i++)
-        {
-            <a href="@Url.Action("AllPolls", "Poll", new { page = i })">@i</a>
-        }
+        <a href="@Url.Action("AllPolls", "Poll", new { page = (ViewBag.Page - 1) })">Prev</a>
     }
     else
     {
-        for (int i = 1; i <= 8; i++)
+        <a href="@Url.Action("AllPolls", "Poll", new { page = 1 })">Prev</a>
+    }
+    @if (ViewBag.AllPages >= 8)
+    {
+        if (ViewBag.Page >= 8)
         {
+            for (int i = ViewBag.Page - 8; i <= ViewBag.Page; i++)
+            {
                 <a href="@Url.Action("AllPolls", "Poll", new { page = i })">@i</a>
+            }
+        }
+        else
+        {
+            for (int i = 1; i <= 8; i++)
+            {
+                    <a href="@Url.Action("AllPolls", "Poll", new { page = i })">@i</a>
             }
         }
     }
@@ -71,11 +71,11 @@ else
         }
     }
     @if (ViewBag.Page < ViewBag.AllPages)
-{
-    <a href="@Url.Action("AllPolls", "Poll", new { page = (ViewBag.Page + 1) })">Next</a>
-}
-else
-{
+    {
+        <a href="@Url.Action("AllPolls", "Poll", new { page = (ViewBag.Page + 1) })">Next</a>
+    }
+    else
+    {
         <a href="@Url.Action("AllPolls", "Poll", new { page = ViewBag.AllPages })">Next</a>
     }
     <a href="@Url.Action("AllPolls", "Poll", new { page = ViewBag.AllPages })">Last</a>
