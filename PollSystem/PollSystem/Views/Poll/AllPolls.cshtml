@@ -19,7 +19,7 @@
             <div class="question">
                 @poll.Title
             </div>
-            <form action="@Url.Action("Vote", new { id = poll.Id, page = ViewBag.Page })" method="get">
+            <form action="@(Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath)/Poll/Vote/@ViewBag.Page/@poll.Id" method="get">
                 <input type="submit" value="Vote!" class="buttonVote" />
             </form>
             <div class="votes">

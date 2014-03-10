@@ -71,8 +71,7 @@ namespace PollSystem.Controllers
 
             var applicationPath = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath;
 
-            // TODO: Fix routings
-            return Json(new { url = applicationPath + "/Poll/AllPolls/?page=" + page });
+            return Json(new { url = applicationPath + "/Poll/AllPolls/" + page });
         }
 
         public PartialViewResult Dialog()
