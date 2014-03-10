@@ -22,8 +22,16 @@ namespace PollSystem.Controllers
         {
             List<Poll> polls = _db.Polls.OrderBy(p => p.Id).Skip(ITEMS_PER_PAGE * (page - 1)).Take(ITEMS_PER_PAGE).ToList();
             ViewBag.Page = page;
-            // TODO: Fix the problem with AllPages
-            ViewBag.AllPages = _db.Polls.Count() / ITEMS_PER_PAGE + 1;
+            int allPolls = _db.Polls.Count();
+            if (allPolls % ITEMS_PER_PAGE == 0)
+            {
+                ViewBag.AllPages = allPolls / ITEMS_PER_PAGE;
+            }
+            else
+            {
+                ViewBag.AllPages = allPolls / ITEMS_PER_PAGE + 1;
+            }
+
             if (page > ViewBag.AllPages || page < 1)
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound, "Bad Request");
@@ -63,6 +71,7 @@ namespace PollSystem.Controllers
 
             var applicationPath = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath;
 
+            // TODO: Fix routings
             return Json(new { url = applicationPath + "/Poll/AllPolls/?page=" + page });
         }
 
