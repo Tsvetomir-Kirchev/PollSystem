@@ -13,8 +13,8 @@
                     <div class="question">
                         @answer.Content
                     </div>
-    <input type="button" value="Vote!" data-id="@answer.Id" data-pollid="@Model.Id" data-page="@ViewBag.Page"
-           data-url="@(Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath)" class="buttonVote vote" />
+                    <input type="button" value="Vote!" data-id="@answer.Id" data-pollid="@Model.Id" data-page="@ViewBag.Page"
+                           data-url="@(Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath)" class="buttonVote vote" />
                 }
 				<a href="@Url.Action("AllPolls", "Poll", new { page = ViewBag.Page })" class="buttonBackToVoteList">Back to the list of polls</a>
 			</article>
